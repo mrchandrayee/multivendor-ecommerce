@@ -8,8 +8,8 @@ import "./globals.css";
 // Theme provider
 import { ThemeProvider } from "next-themes";
 
-// Clerk provider
-import { ClerkProvider } from "@clerk/nextjs";
+// Clerk provider - temporarily disabled
+// import { ClerkProvider } from "@clerk/nextjs";
 
 // Toast
 import { Toaster } from "@/components/ui/toaster";
@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    // <ClerkProvider> - temporarily disabled
       <html lang="en">
         <body className={`${interFont.className} ${barlowFont.variable}`}>
           <ModalProvider>{children}</ModalProvider>
@@ -45,6 +45,6 @@ export default function RootLayout({
           <SonnerToaster position="bottom-left" />
         </body>
       </html>
-    </ClerkProvider>
+    // </ClerkProvider> - temporarily disabled
   );
 }

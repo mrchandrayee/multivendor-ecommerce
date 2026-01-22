@@ -1,7 +1,8 @@
 import AnimatedDeals from "@/components/store/home/animated-deals";
 import Featured from "@/components/store/home/main/featured";
 import HomeMainSwiper from "@/components/store/home/main/home-swiper";
-import HomeUserCard from "@/components/store/home/main/user/user";
+// Temporarily disabled HomeUserCard due to Clerk being disabled
+// import HomeUserCard from "@/components/store/home/main/user/user";
 import Sideline from "@/components/store/home/sideline/sideline";
 import CategoriesHeader from "@/components/store/layout/categories-header/categories-header";
 import Footer from "@/components/store/layout/footer/footer";
@@ -63,12 +64,18 @@ export default async function HomePage() {
               </div>
               {/* Right */}
               <div className="h-full">
-                <HomeUserCard
+                {/* Temporarily disabled HomeUserCard due to Clerk being disabled */}
+                {/* <HomeUserCard
                   products={products_user_card.filter(
                     (product): product is SimpleProduct =>
                       "variantSlug" in product
                   )}
-                />
+                /> */}
+                <div className="h-full hidden min-[1170px]:block relative bg-white rounded-md shadow-sm overflow-hidden p-4">
+                  <h3 className="text-lg font-semibold mb-4">Welcome to GoShop</h3>
+                  <p className="text-gray-600">Authentication temporarily disabled for development.</p>
+                  <p className="text-sm text-gray-500 mt-2">Sign in functionality will be available once Clerk is configured.</p>
+                </div>
               </div>
             </div>
             {/* Animated deals */}

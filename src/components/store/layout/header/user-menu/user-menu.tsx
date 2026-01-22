@@ -2,15 +2,18 @@ import { MessageIcon, OrderIcon, WishlistIcon } from "@/components/store/icons";
 import { Button } from "@/components/store/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { SignOutButton, UserButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+// Temporarily disabled Clerk imports
+// import { SignOutButton, UserButton } from "@clerk/nextjs";
+// import { currentUser } from "@clerk/nextjs/server";
 import { ChevronDown, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function UserMenu() {
-  // Get the current user
-  const user = await currentUser();
+  // Temporarily disabled Clerk - using mock user data
+  // const user = await currentUser();
+  const user = null; // Mock: no user logged in
+
   return (
     <div className="relative group px-2">
       {/* Trigger */}

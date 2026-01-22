@@ -1,11 +1,23 @@
 import Link from "next/link";
-import UserMenu from "./user-menu/user-menu";
+// Temporarily disabled UserMenu due to Clerk being disabled
+// import UserMenu from "./user-menu/user-menu";
 import Cart from "./cart";
 import DownloadApp from "./download-app";
 import Search from "./search/search";
 import { cookies } from "next/headers";
 import { Country } from "@/lib/types";
 import CountryLanguageCurrencySelector from "./country-lang-curr-selector";
+
+// Temporary simple login button component
+function TempLoginButton() {
+  return (
+    <Link href="/sign-in">
+      <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+        Sign In
+      </button>
+    </Link>
+  );
+}
 
 export default function Header() {
   // Get cookies from the store
@@ -34,7 +46,7 @@ export default function Header() {
               <h1 className="font-extrabold text-3xl font-mono">GoShop</h1>
             </Link>
             <div className="flex lg:hidden">
-              <UserMenu />
+              <TempLoginButton />
               <Cart />
             </div>
           </div>
@@ -45,7 +57,7 @@ export default function Header() {
             <DownloadApp />
           </div>
           <CountryLanguageCurrencySelector userCountry={userCountry} />
-          <UserMenu />
+          <TempLoginButton />
           <Cart />
         </div>
       </div>

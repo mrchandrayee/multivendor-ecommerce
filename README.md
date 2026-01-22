@@ -1,8 +1,94 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Setup
+
+### Option 1: Docker Environment (Recommended)
+
+1. **Install Docker** and Docker Compose on your system
+
+2. **Start the MySQL database**:
+   ```bash
+   docker-compose up -d mysql
+   ```
+
+3. **Wait for MySQL to be ready** (check logs):
+   ```bash
+   docker-compose logs mysql
+   ```
+
+4. **Run Prisma migrations**:
+   ```bash
+   npx prisma migrate dev
+   npx prisma generate
+   ```
+
+5. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+### Option 2: Local Environment
+
+### Environment Variables
+
+1. Copy the `.env.local` file and replace all placeholder values with your actual credentials:
+
+```bash
+cp .env.local .env.local.example  # Optional: backup
+```
+
+2. **Required Environment Variables:**
+
+- **DATABASE_URL**: MySQL database connection string
+  - Format: `mysql://username:password@host:port/database_name`
+  - Example: `mysql://root:password@localhost:3306/goshop`
+
+- **Clerk Authentication** (Get from [Clerk Dashboard](https://dashboard.clerk.com)):
+  - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+  - `CLERK_SECRET_KEY`
+
+- **Stripe Payment** (Get from [Stripe Dashboard](https://dashboard.stripe.com)):
+  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+  - `STRIPE_SECRET_KEY`
+  - `STRIPE_WEBHOOK_SECRET`
+
+- **PayPal** (Get from [PayPal Developer](https://developer.paypal.com)):
+  - `PAYPAL_CLIENT_ID`
+  - `PAYPAL_CLIENT_SECRET`
+
+3. **Optional Environment Variables:**
+- **Elasticsearch**: `ELASTICSEARCH_NODE=http://localhost:9200`
+- **Cloudinary**: Get from [Cloudinary Dashboard](https://cloudinary.com/console)
+
+### Temporary Clerk Disable
+
+**Clerk authentication is currently disabled** to allow development without API keys. To re-enable:
+
+1. Update `.env.local` with real Clerk keys
+2. Uncomment Clerk imports and components in:
+   - `src/middleware.ts` (uncomment clerkMiddleware)
+   - `src/app/layout.tsx` (uncomment ClerkProvider)
+3. Restart the development server
+
+### Database Setup
+
+1. Make sure you have MySQL running locally or use a cloud database
+2. Run Prisma migrations:
+
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
+
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
